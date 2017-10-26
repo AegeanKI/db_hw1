@@ -27,6 +27,7 @@
   $find_rs->execute();
   $table=$find_rs->fetch();
 
+
   //if($account == null || $table[0] != null || strpos(trim("$account"), ' ') !== false){
   /*if($account == null || $table[0] != null || preg_match('/\s/', $account)){
     ?><p><?php echo 'account is not correct or been used'; ?><p><?php
@@ -72,9 +73,7 @@
     }
   }	  
   else{
-
-
-    $hash_password=hash('sha256',$password);
+	  $hash_password=hash('sha256',$password);
     $sql_to_adduser="INSERT INTO people (account, password, is_admin, name, email) VALUES ('$account', '$hash_password', $is_admin, '$name', '$email')";
     //$db->query($sql_to_adduser);
     $rs=$db->prepare($sql_to_adduser);
