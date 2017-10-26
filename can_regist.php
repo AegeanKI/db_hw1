@@ -8,14 +8,8 @@
   $name=$_POST['name'];
   $email=$_POST['email']; 
 
-  $needto_reinput = 0;
-  
-  if($_SESSION['is_admin'] == 1){
+  if($_SESSION['account'] != null){
     $is_admin=$_POST['is_admin'];
-    if($is_admin != '1' && $is_admin != '0'){      
-      echo 'is_admin must be 0 or 1<br>';
-      $needto_reinput = 1;
-    }
   }
   else{
     $is_admin=0;
@@ -26,6 +20,8 @@
   $find_rs=$db->prepare($sql_find_account);
   $find_rs->execute();
   $table=$find_rs->fetch();
+
+  $needto_reinput = 0;
 
   //if($account == null || $table[0] != null || strpos(trim("$account"), ' ') !== false){
   /*if($account == null || $table[0] != null || preg_match('/\s/', $account)){
@@ -72,9 +68,7 @@
     }
   }	  
   else{
-
-
-    $hash_password=hash('sha256',$password);
+	  $hash_password=hash('sha256',$password);
     $sql_to_adduser="INSERT INTO people (account, password, is_admin, name, email) VALUES ('$account', '$hash_password', $is_admin, '$name', '$email')";
     //$db->query($sql_to_adduser);
     $rs=$db->prepare($sql_to_adduser);
