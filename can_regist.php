@@ -8,8 +8,14 @@
   $name=$_POST['name'];
   $email=$_POST['email']; 
 
-  if($_SESSION['account'] != null){
+  $needto_reinput = 0;
+  
+  if($_SESSION['is_admin'] == 1){
     $is_admin=$_POST['is_admin'];
+    if($is_admin != '1' && $is_admin != '0'){      
+      echo 'is_admin must be 0 or 1<br>';
+      $needto_reinput = 1;
+    }
   }
   else{
     $is_admin=0;
@@ -21,7 +27,6 @@
   $find_rs->execute();
   $table=$find_rs->fetch();
 
-  $needto_reinput = 0;
 
   //if($account == null || $table[0] != null || strpos(trim("$account"), ' ') !== false){
   /*if($account == null || $table[0] != null || preg_match('/\s/', $account)){
