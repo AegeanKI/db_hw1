@@ -16,26 +16,27 @@
       $this_rs = $db->prepare($sql_find_account);
       $this_rs->execute();
       $table = $this_rs->fetch();
-      echo "my account = $table[0]<br>";
-      echo "my name = $table[3]<br>";
-      echo "my email = $table[4]<br>";
+      echo "<div id=\"personinfo\"><p>hello, $table[0] ! ";
+      echo "name = $table[3] ,";
+      echo "email  =  $table[4]</p></div>";
 
       $sql_find_all = "SELECT * FROM people";
       //$people_rs = $db->query($sql_find_all);
       $people_rs = $db->prepare($sql_find_all);
       $people_rs->execute();
-      echo '<br>all user:<br><table>';
+      echo '<br>all user:<br><div id="table"><table>';
+      echo '<tr><th>user</th><th>name</th><th>email</th><th>admin</th></tr>';
       while($table = $people_rs->fetchObject()){
         ?>
           <tr>
 	    <td><?php echo $table->account; ?></td>
             <td><?php echo $table->name; ?></td>
             <td><?php echo $table->email; ?></td>
-	    <td><?php echo $table->is_admin; ?></td>
+	    <td class="adminis<?php echo $table->is_admin; ?>" > <?php if ($table->is_admin == 1) echo 'O' ?></td>
           </tr>  
         <?php
       }
-      echo '</table><br>';
+      echo '</table></div><br>';
 
       echo 'update or create user or administrator:<br>';
       ?>
@@ -99,3 +100,4 @@
     echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
   }
 ?>
+<link rel="stylesheet" href="all.css">
