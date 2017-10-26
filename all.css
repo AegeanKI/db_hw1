@@ -1,0 +1,41 @@
+
+body{
+	text-align:center;
+  background-color:rgba(33,33,33,0.1);
+}
+
+
+table{
+  text-align:start;
+  border-color:#378;
+  display: inline-block;
+}
+td {
+  //border: 1px solid;
+  margin:2px;
+  border-radius:2px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+td.adminis1{
+  ///background-color:rgba(200,200,20,0.6);
+  background-color:rgba(256,256,0,0.5);
+  color:white;
+  text-align:center;
+}
+th {
+  min-width:5em;
+  background-color:rgba(53,153,220,0.3);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+div {
+  padding:1em;
+  
+  background-color:rgba(53,153,220,0.3);
+}
+div#table {
+  max-width:75%;
+  margin:auto;
+  hello world;
+  border-radius:0.5em;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.5);
+}
