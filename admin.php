@@ -9,7 +9,7 @@
     if($_SESSION['is_admin'] != 1){
 ?>     
       <div class="transport">      
-        <p class="alert">permission denied, only administrator can use this page</p>
+        <p class="alert">Permission denied, only administrator can use this page</p>
         <meta http-equiv=REFRESH CONTENT=2;url=member.php>
       </div>
 <?php
@@ -100,7 +100,7 @@
             </tr>
             <tr>
               <td>email</td>
-              <td><input name="email" type="text"><td>
+              <td><input name="email" type="text"></td>
             </tr>
           </tbody>
         </table>
@@ -143,10 +143,11 @@
   else{
 ?>
     <div class="transport">
-      <p class="alert">Please login, idiot</p>
+      <p class="alert">Please login!</p>
       <meta http-equiv=REFRESH CONTENT=2;url=index.php>
     </div>
 <?php
   }
 ?>
 <link rel="stylesheet" href="all.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -70,8 +70,8 @@
     }
     if($needto_reinput == 1){
 ?>
-      <p class="alert">regist failed</p>
-      <p class="notice">try to regist again</p>
+      <p class="alert">Regist failed :(</p>
+      <p class="notice">Try to regist again</p>
 <?php	  
       if($_SESSION['account'] != null){
 ?>  
@@ -93,7 +93,7 @@
       $rs=$db->prepare($sql_to_adduser);
       $rs->execute();
 ?>
-      <p class="notice">regist successed<p>
+      <p class="notice">Regist success!<p>
 <?php
       if($_SESSION['is_admin'] == 1){
 ?>
@@ -102,7 +102,7 @@
       }
       else{
 ?>
-        <p class="notice">try to login!<p>
+        <p class="notice">Try to login!<p>
         <meta http-equiv=REFRESH CONTENT=2;url=index.php>
 <?php
       }
