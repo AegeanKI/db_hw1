@@ -13,6 +13,9 @@
       $people_rs->execute();
       $table = $people_rs->fetch();
 ?>
+  <div>
+    <h1>Welcome to Member page</h1>
+  </div>
       <div id="member">
         <h3>Member Info</h3>
         
@@ -40,7 +43,7 @@
     else{
 ?>
       <div class="transport">
-        <p class="alert">this account is admin, you DON'T belong here</p>
+        <p class="alert">This account is admin, you DON'T belong here</p>
         <meta http-equiv=REFRESH CONTENT=2;url=admin.php>
       </div>
 <?php
@@ -49,7 +52,7 @@
   else{
 ?>
     <div class="transport">
-      <p class="alert">please login</p>
+      <p class="alert">Please login !</p>
       <meta http-equiv=REFRESH CONTENT=2;url=index.php>
     </div>
 <?php

@@ -1,10 +1,44 @@
+@media screen and (max-width:480px) {
+  body{
+    background-color:#eee;
+  }
+  table,td,th{
+    border:1px solid black;
+  }
+  table{
+    display:inline-block;
+    margin-bottom:0.5em;
+  }
+  table.noshadow,table.noshadow>tbody>tr>td{
+    border:none;
+  }
+  div{
+    display:block;
+    text-align:center;
+    border-bottom: 1px solid black;
+  }
 
+}
+@media screen and (min-width:480px) {
+ 
 body{
 	text-align:center;
   background-color:rgba(33,33,33,0.1);
   margin:0px
 }
+/*p for alert and notice*/
 
+p.alert{
+  color:rgb(200,0,0);
+  font-size:20pt;
+  font-family:sans-serif;
+}
+p.notice{
+  font-size:20pt;
+  font-family:sans-serif;
+}
+
+/*Tables and td,th*/
 
 table{
   //padding:0.5em 0em;
@@ -15,6 +49,7 @@ table{
 }
 td {
   //border: 1px solid;
+  padding:1px;
   margin:2px;
   border-radius:2px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
@@ -36,13 +71,10 @@ form>table>tr>td{
 .noshadow > tbody> tr >td{
   box-shadow:none;
 }
-input[type="text"]{
-  padding:0.25em;
-  border:none;
-  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.5);
-  border-radius:0.2em;
-}
-input[type="password"]{
+
+/*Buttons*/
+
+input[type="text"],input[type="password"]{
   padding:0.25em;
   border:none;
   box-shadow: inset 1px 1px 3px rgba(0,0,0,0.5);
@@ -62,6 +94,12 @@ input[type|="submit"]{
   border-radius:0.2em;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 }
+input[value="logout"]{
+  background-color:rgb(243,198,203);
+}
+
+/*the divs and a p and h1*/
+
 div>p{
   margin:0;
 }
@@ -75,7 +113,7 @@ h1{
 div#personinfo{
   //border: 0.5em solid rgba(53,153,220,0.3);
   position:fixed;
-  top:15em;
+  top:25vh;
   right:0;
   max-width:15em;
   max-height:10em;
@@ -129,7 +167,7 @@ div#member{
   width:25em;
   padding:1em;
   max-height:30em;
-  margin: 33vh calc(50vw - 13.5em) 25vh calc(50vw - 13.5em);
+  margin: 25vh calc(50vw - 13.5em) 25vh calc(50vw - 13.5em);
   border-radius:0.5em;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.5);
 }
@@ -141,4 +179,15 @@ div#regist{
   margin: 25vh calc(50vw - 13.5em) 25vh calc(50vw - 13.5em);
   border-radius:0.5em;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.5);
+}
+div.transport{
+  position:absolute;
+  width:25em;
+  padding:1em;
+  max-height:30em;
+  margin: 25vh calc(50vw - 13.5em) 25vh calc(50vw - 13.5em);
+  border-radius:0.5em;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.5);
+}
+
 }
