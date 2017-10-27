@@ -5,8 +5,12 @@
 
   if($_SESSION['account'] != null){
     if($_SESSION['is_admin'] != 1){
-      echo 'permission denied, only administrator can upgrade account<br>';
-      echo '<meta http-equiv=REFRESH CONTENT=2;url=member.php>';
+?>
+      <div class="transport">
+        <p class="alert">permission denied, only administrator can upgrade account</p>
+        <meta http-equiv=REFRESH CONTENT=2;url=member.php>
+      </div>
+<?php
     }
     else{
       $account=$_POST['account'];
@@ -15,13 +19,21 @@
       //$db->query($sql_find_account);
       $rs=$db->prepare($sql_find_account);
       $rs->execute();
-      echo 'already upgrade<br>';
-      echo '<meta http-equiv=REFRESH CONTENT=1;url=admin.php>';
+?>
+      <div class="transport">
+        <p class="notice">already upgrade</p>
+        <meta http-equiv=REFRESH CONTENT=1;url=admin.php>
+      </div>
+<?php
     }
   }
   else{
-    echo 'please login <br>';
-    echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
+?>
+    <div class="transport">
+      <p class="alert">please login </p>
+      <meta http-equiv=REFRESH CONTENT=1;url=index.php>
+    </div>
+<?php
   }
 ?>
 <link rel="stylesheet" href="all.css">

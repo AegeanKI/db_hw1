@@ -20,13 +20,20 @@
     else{
       $who = "admin";
     }
-    echo "$who login successed";
-    echo "<meta http-equiv=REFRESH CONTENT=1;url='$who'.php>";
+?>
+    <div class="transport">
+      <p class="notice"><?php echo "$who"; ?> login successed</p>
+      <meta http-equiv=REFRESH CONTENT=1;url=<?php echo "$who" ?>.php>
+    </div>
+<?php
   }
   else{
-    echo "login failed";
-    echo "<meta http-equiv=REFRESH CONTENT=2;url=index.php>";
+?>
+    <div class="transport">
+      <p class="alert">login failed</p>
+      <meta http-equiv=REFRESH CONTENT=2;url=index.php>
+    </div>
+<?php
   }
 ?>
-
 <link rel="stylesheet" href="all.css">

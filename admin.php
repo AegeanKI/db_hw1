@@ -7,8 +7,12 @@
 
   if($my_account != null){
     if($_SESSION['is_admin'] != 1){
-      echo "permission denied, only administrator can use this page<br>";
-      echo '<meta http-equiv=REFRESH CONTENT=2;url=member.php>';
+?>     
+      <div class="transport">      
+        <p class="alert">permission denied, only administrator can use this page</p>
+        <meta http-equiv=REFRESH CONTENT=2;url=member.php>
+      </div>
+<?php
     }
     else{
       $sql_find_account = "SELECT * FROM people WHERE account='$my_account'";
@@ -18,99 +22,131 @@
       $table = $this_rs->fetch();
 ?>
       <div id="welcome"><h1>Welcome to the Adim page!</h1></div>
-<?php
-      echo "<div id=\"personinfo\"><p>Hello, $table[0] ! </p>";
-      echo "<table><tbody><tr><th colspan=\"2\">info</th><tr><tr><td>name</td><td>$table[3]</td></tr>";
-      echo "<tr><td>email</td><td>$table[4]</td></tr></tbody></table>";
-      ?>
-      <p>
-      <input type="button" onclick="location.href='logout.php'" value="logout"></input><br>
-      </p>
+      <div id="personinfo">
+        <p>Hello, <?php echo "$table[0]"; ?> ! </p>
+        
+        <table>
+          <tbody>
+            <tr>
+              <th colspan="2">info</th>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td><?php echo "$table[3]"; ?></td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td><?php echo "$table[4]"; ?></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p>
+          <input type="button" onclick="location.href='logout.php'" value="logout"></input>
+        </p>
       </div>
-      <?php
+<?php
       $sql_find_all = "SELECT * FROM people";
       //$people_rs = $db->query($sql_find_all);
       $people_rs = $db->prepare($sql_find_all);
       $people_rs->execute();
-      echo '<div id="table"><table><h3>All users</h3>';
-      echo '<tr><th>user</th><th>name</th><th>email</th><th>admin</th></tr>';
-      while($table = $people_rs->fetchObject()){
-        ?>
+?>
+      <div id="table">
+        <table>
+          <h3>All users</h3>
           <tr>
-	    <td><?php echo $table->account; ?></td>
+            <th>user</th>
+            <th>name</th>
+            <th>email</th>
+            <th>admin</th>
+          </tr>
+<?php 
+      while($table = $people_rs->fetchObject()){ 
+?>
+          <tr>
+	          <td><?php echo $table->account; ?></td>
             <td><?php echo $table->name; ?></td>
             <td><?php echo $table->email; ?></td>
-	    <td class="adminis<?php echo $table->is_admin; ?>" > <?php if ($table->is_admin == 1) echo 'O' ?></td>
+	          <td class="adminis<?php echo $table->is_admin; ?>" > <?php if ($table->is_admin == 1) echo 'O' ?></td>
           </tr>  
-        <?php
+<?php
       }
-      ?>
-       </table></div>
-       <div id="create">
+?>
+        </table>
+      </div>
+
+      <div id="create">
         <h3>Update</h3> 
         <p>update or create user or administrator</p>
-      <form name="update_or_build" method="post" action="can_regist.php">
-      <table class="noshadow"><tbody>
-        <tr>
-          <td>account</td>
-          <td><input name="account" type="text"></td>
-        </tr>
-        <tr>
-          <td>password</td>
-          <td><input name="password" type="password"></td>
-        </tr>
-        <tr>
-          <td>is_admin</td>
-          <td><input name="is_admin" type="text"></td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td><input name="name" type="text"></td>
-        </tr>
-        <tr>
-          <td>email</td>
-          <td><input name="email" type="text"><td>
-        </tr>
-        </tbody></table>
+        
+        <form name="update_or_build" method="post" action="can_regist.php">        
+        <table class="noshadow">
+          <tbody>
+            <tr>
+              <td>account</td>
+              <td><input name="account" type="text"></td>
+            </tr>
+            <tr>
+              <td>password</td>
+              <td><input name="password" type="password"></td>
+            </tr>
+            <tr>
+              <td>is_admin</td>
+              <td><input name="is_admin" type="text"></td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td><input name="name" type="text"></td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td><input name="email" type="text"><td>
+            </tr>
+          </tbody>
+        </table>
+        
         <p>
           <input name="button_to_submit" type="submit" value="create">
         </p>
-      </form>
-    </div>
-    <div id="delete">
-      <h3>Delete</h3>
-      <p>delete user or administrator</p>
-      <form name="delete_user" method="post" action="delete.php">
-        <p>account:
-          <input name="account" type="text">
-        </p>
+        </form>
+      </div>
+      <div id="delete">
+        <h3>Delete</h3>
+        <p>delete user or administrator</p>
+        <form name="delete_user" method="post" action="delete.php">
+          <p>account:
+            <input name="account" type="text">
+          </p>
       
-        <p>
-          <input name="button_to_submit" type="submit" value="delete">
-        </p>
-      </form>
-
-    </div>
-    <div id="upgrade">
-      <h3>Upgrade</h3>
-      <p>let user be an  administrator</p>
-      <form name="upgrade_user" method="post" action="upgrade.php">
-        <p>account:
-          <input name="account" type="text">
-        </p>
+          <p>
+            <input name="button_to_submit" type="submit" value="delete">
+          </p>
+        </form>
+      </div>
       
-        <p>
-          <input name="button_to_submit" type="submit" value="upgrade">
-        </p>
-      </form>
-    </div>
+      <div id="upgrade">
+        <h3>Upgrade</h3>
+        <p>let user be an  administrator</p>
+        <form name="upgrade_user" method="post" action="upgrade.php">
+          <p>account:
+            <input name="account" type="text">
+          </p>
       
-      <?php
+          <p>
+            <input name="button_to_submit" type="submit" value="upgrade">
+          </p>
+        </form>
+      </div>
+<?php
     }
   }
   else{
-    echo 'please login<br>';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
+?>
+    <div class="transport">
+      <p class="alert">Please login, idiot</p>
+      <meta http-equiv=REFRESH CONTENT=2;url=index.php>
+    </div>
+<?php
   }
 ?>
 <link rel="stylesheet" href="all.css">

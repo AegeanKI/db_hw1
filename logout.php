@@ -3,7 +3,9 @@
 <?php
   unset($_SESSION['account']);
   unset($_SESSION['is_admin']);
-  echo 'logout...';
-  echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
 ?>
+  <div class="transport">
+    <p class="notice">logout...</p>
+    <meta http-equiv=REFRESH CONTENT=1;url=index.php>
+  </div>
 <link rel="stylesheet" href="all.css">
