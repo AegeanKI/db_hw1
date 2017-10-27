@@ -12,16 +12,16 @@
       $people_rs = $db->prepare($sql_find_account);
       $people_rs->execute();
       $table = $people_rs->fetch();
-      echo "my account = $table[0]<br>";
-      echo "my name = $table[3]<br>";
-      echo "my email = $table[4]<br>";
+      echo "<div id=\"member\"><h3>Member Info</h3><table><tr><th>account</th><td>$table[0]";
+      echo "</td></tr><tr><th>name</th><td>$table[3]</td></tr>";
+      echo "<tr><th>email</th><td>$table[4]</td></tr></table>";
 
       ?>
-        <input type="button" onclick="location.href='logout.php'" value="logout"></input><br>
+        <p><input type="button" onclick="location.href='logout.php'" value="logout"></input></p></div>
       <?php
     }
     else{
-      echo "this account is admin, here is not belong to you<br>";
+      echo "this account is admin, you DON'T belong here<br>";
       echo '<meta http-equiv=REFRESH CONTENT=2;url=admin.php>';
     }
   }

@@ -16,15 +16,23 @@
       $this_rs = $db->prepare($sql_find_account);
       $this_rs->execute();
       $table = $this_rs->fetch();
-      echo "<div id=\"personinfo\"><p>hello, $table[0] ! ";
-      echo "name = $table[3] ,";
-      echo "email  =  $table[4]</p></div>";
-
+?>
+      <div id="welcome"><h1>Welcome to the Adim page!</h1></div>
+<?php
+      echo "<div id=\"personinfo\"><p>Hello, $table[0] ! </p>";
+      echo "<table><tbody><tr><th colspan=\"2\">info</th><tr><tr><td>name</td><td>$table[3]</td></tr>";
+      echo "<tr><td>email</td><td>$table[4]</td></tr></tbody></table>";
+      ?>
+      <p>
+      <input type="button" onclick="location.href='logout.php'" value="logout"></input><br>
+      </p>
+      </div>
+      <?php
       $sql_find_all = "SELECT * FROM people";
       //$people_rs = $db->query($sql_find_all);
       $people_rs = $db->prepare($sql_find_all);
       $people_rs->execute();
-      echo '<br>all user:<br><div id="table"><table>';
+      echo '<div id="table"><table><h3>All users</h3>';
       echo '<tr><th>user</th><th>name</th><th>email</th><th>admin</th></tr>';
       while($table = $people_rs->fetchObject()){
         ?>
@@ -36,38 +44,42 @@
           </tr>  
         <?php
       }
-      echo '</table></div><br>';
-
-      echo 'update or create user or administrator:<br>';
       ?>
+       </table></div>
+       <div id="create">
+        <h3>Update</h3> 
+        <p>update or create user or administrator</p>
       <form name="update_or_build" method="post" action="can_regist.php">
-        <p>account:
-          <input name="account" type="text">
-        </p>
-
-        <p>password:
-          <input name="password" type="password">
-        </p>
-
-        <p>is_admin:
-          <input name="is_admin" type="text">
-        </p>
-
-        <p>name:
-          <input name="name" type="text">
-        </p>
-
-        <p>email:
-          <input name="email" type="text">
-        </p>
-
+      <table class="noshadow"><tbody>
+        <tr>
+          <td>account</td>
+          <td><input name="account" type="text"></td>
+        </tr>
+        <tr>
+          <td>password</td>
+          <td><input name="password" type="password"></td>
+        </tr>
+        <tr>
+          <td>is_admin</td>
+          <td><input name="is_admin" type="text"></td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td><input name="name" type="text"></td>
+        </tr>
+        <tr>
+          <td>email</td>
+          <td><input name="email" type="text"><td>
+        </tr>
+        </tbody></table>
         <p>
           <input name="button_to_submit" type="submit" value="create">
         </p>
-      </form><?php
-
-      echo 'delete user or administrator:<br>';
-      ?>
+      </form>
+    </div>
+    <div id="delete">
+      <h3>Delete</h3>
+      <p>delete user or administrator</p>
       <form name="delete_user" method="post" action="delete.php">
         <p>account:
           <input name="account" type="text">
@@ -76,10 +88,12 @@
         <p>
           <input name="button_to_submit" type="submit" value="delete">
         </p>
-      </form><?php
+      </form>
 
-      echo 'let user be an  administrator:<br>';
-      ?>
+    </div>
+    <div id="upgrade">
+      <h3>Upgrade</h3>
+      <p>let user be an  administrator</p>
       <form name="upgrade_user" method="post" action="upgrade.php">
         <p>account:
           <input name="account" type="text">
@@ -88,10 +102,9 @@
         <p>
           <input name="button_to_submit" type="submit" value="upgrade">
         </p>
-      </form><?php
-    
-      ?>
-        <input type="button" onclick="location.href='logout.php'" value="logout"></input><br>
+      </form>
+    </div>
+      
       <?php
     }
   }
