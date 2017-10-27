@@ -62,7 +62,7 @@
     $needto_reinput=1;
   }
   if($needto_reinput == 1){
-    ?><p><?php echo 'regist failed'; ?><p><?php
+    ?><p>regist failed</p><?php
     ?><p><?php echo 'try to regist again'; ?></p><?php	  
     if($_SESSION['account'] != null){
       echo '<meta http-equiv=REFRESH CONTENT=2;url=admin.php>';
@@ -88,3 +88,4 @@
     }
   }
 ?>
+<link rel="stylesheet" href="all.css">

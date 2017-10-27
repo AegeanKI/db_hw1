@@ -2,32 +2,39 @@
 
 <html>
 <head>
+  <link rel="stylesheet" href="all.css">
   <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 </head>
 
 <body>
+  <div id="regist">
   <form name="regist" method="post" action="can_regist.php">
-    <p>account:
-      <input name="account" type="text">
-    </p>
-
-    <p>password:
-      <input name="password" type="password">
-    </p>
-
-    <p>name:
-      <input name="name" type="text">
-    </p>
-
-    <p>email:
-      <input name="email" type="text">
-    </p>
-    
+        <h3>Regist</h3> 
+        <p>please registrate</p>
+      <table class="noshadow"><tbody>
+        <tr>
+          <td>account</td>
+          <td><input name="account" type="text"></td>
+        </tr>
+        <tr>
+          <td>password</td>
+          <td><input name="password" type="password"></td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td><input name="name" type="text"></td>
+        </tr>
+        <tr>
+          <td>email</td>
+          <td><input name="email" type="text"><td>
+        </tr>
+        </tbody></table> 
     <p>
       <input name="button_to_regist" type="submit" value="regist">
       <input type="button" onclick="location.href='index.php'" value="canecel"></input>
     </p>
   </form>
+  </div>
 </body>
 </html>
 
@@ -110,46 +117,5 @@ if($email == null || !filter_var($email, FILTER_VALIDATE_EMAIL)){
     }
   }*/
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
