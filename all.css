@@ -181,6 +181,7 @@ div#regist{
   box-shadow: 4px 4px 16px rgba(0,0,0,0.5);
 }
 div.transport{
+  background-color:rgba(186,229,178,1);
   position:absolute;
   width:25em;
   padding:1em;

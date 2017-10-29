@@ -19,7 +19,7 @@
    <?php
   }*/
   /*
-  if(!@mysql_connect($db_host, $db_user,$db_passqord))
+  if(!@mysql_connect($db_host, $db_user,$db_password))
     die("can't connect to database");
   if(!@mysql_select_db($db_name))
     die("can't use database");*/

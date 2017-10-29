@@ -2,7 +2,11 @@
 
 <?php
   include("connect_database.php");
-  
+    
+  if(isset($_SESSION['login_account'])){
+    unset($_SESSION['login_account']);
+  }
+
   $my_account = $_SESSION['account'];
 
   if($my_account != null){

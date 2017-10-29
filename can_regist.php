@@ -10,12 +10,11 @@
 
   $needto_reinput = 0;
   
-  
-  
   $sql_find_account="SELECT account FROM people WHERE account='$account'";
   //$find_rs=$db->query($sql_find_account);
   $find_rs=$db->prepare($sql_find_account);
   $find_rs->execute();
+  $num=$find_rs->rowCount();
   $table=$find_rs->fetch();
 ?>
   <div class="transport">
@@ -26,7 +25,7 @@
 <?php
       $needto_reinput=1;
     }
-    if($table[0] != null){
+    if($num != 0){
 ?>
       <p class="alert">account is already been used</p>
 <?php
