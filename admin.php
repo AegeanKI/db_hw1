@@ -256,7 +256,7 @@
             </tr>
             <tr>
               <td>re_password</td>
-              <td><input name="re_password" type="password"></td>
+              <td><input name="confirm" type="password"></td>
             </tr>
             <tr>
               <td>is_admin</td>
