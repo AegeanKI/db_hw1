@@ -20,39 +20,49 @@
     $num=$find_rs->rowCount();
     $table=$find_rs->fetch();
   
-    ?><div class="transport"><?php
+      
+      $needto_output = array();
       if($account == null){
-        ?><p class="alert">account can not be null</p><?php
+        array_push($needto_output, "account can not be null");
         $needto_reinput=1;
       }
       if($num != 0){
-        ?><p class="alert">account is already been used</p><?php
+        array_push($needto_output, "account is already been used");
         $needto_reinput=1;
       }
       if(preg_match('/\s/', $account)){//if $account have " "
-        ?><p class="alert">account can not use whitespace</p><?php
+        array_push($needto_output, "account can not use whitespace");
         $needto_reinput=1;
       }
       if($password == null){
-        ?><p class="alert">password can not be null</p><?php
+        array_push($needto_output, "password can not be null");
         $needto_reinput=1;
       }
-      if($re_password != $password){
-        ?><p class="alert">password is not equal to re_password</p><?php
+      if($password != $re_password){
+        array_push($needto_output, "password isn't the same");
         $needto_reinput=1;
       }
       if($name == null){
-        ?><p class="alert">name can not be null</p><?php
+        array_push($needto_output, "name can not be null");
         $needto_reinput=1;
       }
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){//check email
-        ?><p class="alert">email is invalid</p><?php
+        array_push($needto_output, "email is invalid");
         $needto_reinput=1;
       }
+      ?><div class="transport"><?php
+      
       if($needto_reinput == 1){
-        ?><p class="alert">Regist failed :(</p>
+        ?>
         <p class="notice">Try to regist again</p>
-        <meta http-equiv=REFRESH CONTENT=2;url=regist.php><?php
+        <p class="alert">Regist failed :(</p>
+        <?php
+          foreach($needto_output as $key => $value){
+        ?><p class="alert" style="text-align:start">><?php echo $value ?></p><?php
+        }
+        
+        unset($needto_output); 
+        ?><meta http-equiv=REFRESH CONTENT=2;url=regist.php><?php
       }	  
       else{
   	    $hash_password=hash('sha256',$password);
@@ -91,8 +101,8 @@
           <td>password</td>
           <td><input name="password" type="password"></td>
         </tr>
-          <td>re_password</td>
-          <td><input name="re_password" type="password"></td>
+          <td>confirm</td>
+          <td><input name="re_password" type="password" placeholder="type again password"></td>
         </tr>
         <tr>
           <td>name</td>
@@ -105,9 +115,10 @@
         </tbody></table> 
     <p>
       <input name="button_to_regist" type="submit" value="regist">
-      <input type="button" onclick="location.href='index.php'" value="canecel"></input>
+      <input type="button" onclick="location.href='index.php'" value="cancel"></input>
     </p>
   </form>
   </div>
 </body>
 </html>
+       

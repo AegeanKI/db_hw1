@@ -7,9 +7,9 @@
     unset($_SESSION['login_account']);
   }
 
-  $my_account = $_SESSION['account'];
 
-  if($my_account != null){
+  if(isset($_SESSION['account'])){
+    $my_account = $_SESSION['account'];
     if($_SESSION['is_admin'] != 1){
       $sql_find_account = "SELECT * FROM people WHERE account='$my_account'";
       //$people_rs = $db->query($sql_find_account);

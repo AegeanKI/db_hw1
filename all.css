@@ -32,6 +32,7 @@ p.alert{
   color:rgb(200,0,0);
   font-size:20pt;
   font-family:sans-serif;
+  //text-align:start;
 }
 p.notice{
   font-size:20pt;
@@ -59,6 +60,9 @@ td.adminis1{
   background-color:rgba(100,240,0,0.6);
   color:white;
   text-align:center;
+}
+td.adjust{
+  box-shadow:none;
 }
 th {
   min-width:5em;

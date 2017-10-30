@@ -44,9 +44,9 @@
      
     if($needto_reinput == 1){
       ?><div class="transport">
-      <p class="alert">login failed</p><?php
+      <p class="notice">Login failed</p><?php
       foreach($needto_output as $key => $value){
-        ?><p class="alert"><?php echo "$value"; ?></p><?php
+        ?><p class="alert" style="text-align:start">><?php echo "$value"; ?></p><?php
       }
       ?></div>
       <meta http-equiv=REFRESH CONTENT=2;url=index.php><?php
