@@ -21,8 +21,38 @@
     $people_rs = $db->prepare($sql_find_account);
     $people_rs->execute();
     $table = $people_rs->fetch();
- 
-    if($_SESSION['login_account'] != null && $password != null && $table[0] == $_SESSION['login_account'] && $table[1] == $hash_password){
+
+    $needto_output = array();
+    $needto_reinput = 0;
+
+    if($_SESSION['login_account'] == null){
+      array_push($needto_output, "account can't be null");
+      $needto_reinput = 1;
+    }
+    if($password == null){
+      array_push($needto_output, "password can't be null");
+      $needto_reinput = 1;
+    }
+    if($_SESSION['login_account'] != $table[0]){
+      array_push($needto_output, "account doesn't be exist");
+      $needto_reinput = 1;
+    }
+    if($hash_password != $table[1]){
+      array_push($needto_output, "password isn't correct");
+      $needto_reinput = 1;
+    }
+     
+    if($needto_reinput == 1){
+      ?><div class="transport">
+      <p class="alert">login failed</p><?php
+      foreach($needto_output as $key => $value){
+        ?><p class="alert"><?php echo "$value"; ?></p><?php
+      }
+      ?></div>
+      <meta http-equiv=REFRESH CONTENT=2;url=index.php><?php
+      unset($needto_output);
+    }
+    else{
       $_SESSION['account'] = $account;
       $_SESSION['is_admin'] = $table[2];
       unset($_SESSION['login_account']);
@@ -37,14 +67,6 @@
       <div class="transport">
         <p class="notice"><?php echo "$who"; ?> login successed</p>
         <meta http-equiv=REFRESH CONTENT=1;url=<?php echo "$who" ?>.php>
-      </div>
-<?php
-    }
-    else{
-?>
-      <div class="transport">
-        <p class="alert">login failed</p>
-        <meta http-equiv=REFRESH CONTENT=2;url=index.php>
       </div>
 <?php
     }

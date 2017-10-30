@@ -5,6 +5,7 @@
   if(isset($_POST['account'])){
     $account=$_POST['account'];//for sql
     $password=$_POST['password'];
+    $re_password=$_POST['re_password'];
     $name=$_POST['name'];
     $email=$_POST['email'];
     $_SESSION['regist_account']=$_POST['account'];//for reinput's value
@@ -34,6 +35,10 @@
       }
       if($password == null){
         ?><p class="alert">password can not be null</p><?php
+        $needto_reinput=1;
+      }
+      if($re_password != $password){
+        ?><p class="alert">password is not equal to re_password</p><?php
         $needto_reinput=1;
       }
       if($name == null){
@@ -85,6 +90,9 @@
         <tr>
           <td>password</td>
           <td><input name="password" type="password"></td>
+        </tr>
+          <td>re_password</td>
+          <td><input name="re_password" type="password"></td>
         </tr>
         <tr>
           <td>name</td>
