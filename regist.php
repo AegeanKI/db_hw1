@@ -102,7 +102,7 @@
           <td><input name="password" type="password"></td>
         </tr>
           <td>confirm</td>
-          <td><input name="re_password" type="password" placeholder="type again password"></td>
+          <td><input name="re_password" type="password" placeholder="type password again"></td>
         </tr>
         <tr>
           <td>name</td>
@@ -110,7 +110,7 @@
         </tr>
         <tr>
           <td>email</td>
-          <td><input name="email" type="text value="<?php if(isset($_SESSION['regist_email'])){echo $_SESSION['regist_email'];} ?>""><td>
+          <td><input name="email" type="text" value="<?php if(isset($_SESSION['regist_email'])){echo $_SESSION['regist_email'];} ?>"><td>
         </tr>
         </tbody></table> 
     <p>
