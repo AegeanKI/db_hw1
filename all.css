@@ -110,7 +110,7 @@ input.adjust{
   padding:2px 0em;
   border:none;
   border-radius:0.2em;
-  box-shadow: 1px 1px 9px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 form{
   margin:0;
