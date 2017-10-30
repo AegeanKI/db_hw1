@@ -224,7 +224,7 @@
             <td><?php echo $table->name; ?></td>
             <td><?php echo $table->email; ?></td>
 	          <td class="adminis<?php echo $table->is_admin; ?>" > <?php if ($table->is_admin == 1) echo 'O' ?></td>
-            <td>
+            <td class="adjust">
             <form method="post" action="admin.php">
             <input type="hidden" name="button_delete_account" value="<?php echo $table->account; ?>"><input class="adjust" value="delete" type="submit">
             </form>
