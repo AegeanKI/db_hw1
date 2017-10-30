@@ -255,7 +255,7 @@
               <td><input name="password" type="password"></td>
             </tr>
             <tr>
-              <td>re_password</td>
+              <td>confirm</td>
               <td><input name="confirm" type="password"></td>
             </tr>
             <tr>
